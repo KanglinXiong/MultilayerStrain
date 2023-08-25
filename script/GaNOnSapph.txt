@@ -1,0 +1,34 @@
+#########################################################
+# This file is part of the MultilayerStrain package.    #
+# Version 0.1.0                                         #
+# Copyright (c) 2016 and later, Kanglin Xiong.          #
+#########################################################
+
+# Here are syntax rules.
+# Any line with a hash sign is a comment, thus igored during parsing.
+# All name is case sensitive.
+# A layer is {material thickness relax}.
+# Thickness can have units, such as 10nm, 2um. There should be no space between number and unit.
+# Thickness is in nm by default.
+# The relax is between 0 and 1. The relax can be omitted if it is 0.
+# Repeated stack is input as {mat1 d1, mat2 d2, mat3 d3, ... } * n
+# Graded layer {[Ax%y%BC thickness numberOfLayersAfterDiscretization]}
+# Both x and y are int with two digitials. x + y == 100
+# Graded layers can be used as {[Al10%90%GaN 100.0 10], [Al99%01%GaN 50.0 10]}*20.
+# Graded layers will be linearly expanded into a stack of discretized layers.
+# No relax can be speicified in graded layers.
+
+{GaN 4um 0.0}
+
+{GaN 200 1.0}
+
+#{[Al10%90%GaN 100.0 4], [Al90%10%GaN 50.0 4]}*2
+
+#{GaN 2nm, AlN 1}*6
+
+#{[Al10%90%GaN 100.0 10]}
+
+{Sapphire 500um}
+
+
+
